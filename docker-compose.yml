@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  broker:
+    build: ./broker
+    ports:
+      - "3002:3002"
+
+  api:
+    build: ./api
+    ports:
+      - "3001:3001"
+    environment:
+      - BROKER_URL=http://broker:3002
+    depends_on:
+      - broker
+
+  ui:
+    build: ./ui
+    ports:
+      - "5173:5173"
+
+  worker-general:
+    build: ./workers/general
+    environment:
+      - BROKER_URL=http://broker:3002
+      - API_URL=http://api:3001
+    depends_on:
+      - broker
+      - api

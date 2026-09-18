@@ -1,0 +1,11 @@
+{
+  "name": "worker-crane",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/index.js"
+  },
+  "dependencies": {
+    "uuid": "11.1.0"
+  }
+}

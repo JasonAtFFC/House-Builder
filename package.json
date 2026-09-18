@@ -1,0 +1,21 @@
+{
+  "name": "principal-system-design",
+  "private": true,
+  "workspaces": [
+    "ui",
+    "api",
+    "broker",
+    "workers/*"
+  ],
+  "scripts": {
+    "dev": "docker-compose up --build",
+    "dev:local": "concurrently \"npm run dev:broker\" \"npm run dev:api\" \"npm run dev:ui\" \"npm run dev:worker:general\"",
+    "dev:broker": "npm run dev --workspace=broker",
+    "dev:api": "npm run dev --workspace=api",
+    "dev:ui": "npm run dev --workspace=ui",
+    "dev:worker:general": "npm run dev --workspace=workers/general"
+  },
+  "devDependencies": {
+    "concurrently": "9.1.2"
+  }
+}
